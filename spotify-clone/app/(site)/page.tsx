@@ -2,6 +2,6 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>Spotify clone</div>
+    <div className="text-green-500">Spotify world!</div>
   )
 }
