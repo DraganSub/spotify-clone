@@ -78,6 +78,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           </>
         </div>
       </div>
+      {children}
     </div>
   )
 }
