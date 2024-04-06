@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "typeRoots": ["./use-sound.d.ts"],
     "plugins": [
       {
         "name": "next"
