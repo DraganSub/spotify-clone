@@ -1,8 +1,27 @@
+"use client"
 import { Header } from '@/components/Header';
 
 import { AccountContent } from './components/AccountContent';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { getCookie } from '@/libs/helpers';
 
 const Account = () => {
+
+  const user = getCookie("sb-xleestdvpunvshbwzgnx-auth-token");
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(user)
+    if (!user) {
+      router.push("/")
+    }
+  }, [user])
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <div
       className="

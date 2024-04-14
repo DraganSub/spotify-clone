@@ -92,17 +92,13 @@ const manageSubscriptionStatusChange = async (
   customerId: string,
   createAction = false
 ) => {
-  // Get customer's UUID from mapping table.
-  console.log("subscriptionId", subscriptionId)
-  console.log("CustomerId", customerId)
-  console.log("create action", createAction)
+
   const { data: customerData, error: noCustomerError } = await supabaseAdmin
     .from('customers')
-    .select('id')
+    .select("id")
     .eq('stripe_customer_id', customerId)
     .single();
 
-  console.log("after customer id", customerData, `No Customer error, ${noCustomerError}`)
   if (noCustomerError) throw noCustomerError;
 
   const { id: uuid } = customerData;
@@ -110,7 +106,6 @@ const manageSubscriptionStatusChange = async (
     expand: ['default_payment_method'],
   });
 
-  // Upsert the latest status of the subscription object.
   const subscriptionData: Database['public']['Tables']['subscriptions']['Insert'] = {
     id: subscription.id,
     user_id: uuid,

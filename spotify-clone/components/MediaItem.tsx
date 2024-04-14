@@ -13,6 +13,7 @@ interface MediaItemProps {
 const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
   const player = usePlayer();
   const imageUrl = useLoadImage(data);
+
   const handleClick = () => {
     if (onClick) {
       return onClick(data.id);
@@ -20,6 +21,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
 
     return player.setId(data.id);
   };
+
   return (
     <div
       onClick={handleClick}

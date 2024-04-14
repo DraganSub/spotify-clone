@@ -32,13 +32,13 @@ export const MyUserContextProvider = (props: Props) => {
     supabase
       .from('subscriptions')
       .select('*, prices(*, products(*))')
+      .eq("user_id", user?.id)
       .in('status', ['trialing', 'active'])
       .single();
 
   useEffect(() => {
     if (user && !isLoadingData && !userDetails && !subscription) {
       setIsLoadingData(true);
-
       Promise.allSettled([getUserDetails(), getSubscription()]).then(
         ([userDetailsPromise, subscriptionPromise]) => {
           if (userDetailsPromise.status === 'fulfilled') {
@@ -46,6 +46,8 @@ export const MyUserContextProvider = (props: Props) => {
           } else {
             console.error(userDetailsPromise.reason);
           }
+          console.log("user", user)
+          console.log("promises", userDetailsPromise, subscriptionPromise)
 
           if (subscriptionPromise.status === 'fulfilled') {
             setSubscription(subscriptionPromise.value?.data as Subscription);
