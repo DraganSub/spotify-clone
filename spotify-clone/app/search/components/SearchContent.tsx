@@ -3,7 +3,7 @@
 
 import { Song } from "@/types";
 import MediaItem from "@/components/MediaItem";
-import LikeButton from "@/components/LikeButton";
+import { LikeButton } from "@/components/LikeButton";
 import useOnPlay from "@/hooks/useOnPlay";
 
 
