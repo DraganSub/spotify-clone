@@ -46,8 +46,6 @@ export const MyUserContextProvider = (props: Props) => {
           } else {
             console.error(userDetailsPromise.reason);
           }
-          console.log("user", user)
-          console.log("promises", userDetailsPromise, subscriptionPromise)
 
           if (subscriptionPromise.status === 'fulfilled') {
             setSubscription(subscriptionPromise.value?.data as Subscription);
